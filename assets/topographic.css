@@ -1,0 +1,74 @@
+/* Homepage enhancements: topographic hero and current-project cards.
+   Loaded after style.css and homepage.css. */
+
+/* Gentle contour artwork behind the hero, without replacing portrait space. */
+.hero {
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
+}
+.hero::before {
+  content: "";
+  position: absolute;
+  z-index: -1;
+  inset: -12% -7% -15% 20%;
+  pointer-events: none;
+  background-image: url("topographic-lines.svg");
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+  opacity: .52;
+  animation: topo-drift 24s ease-in-out infinite alternate;
+}
+.hero > * { position: relative; z-index: 1; }
+@keyframes topo-drift {
+  from { transform: translate3d(-1.5%, 0, 0) scale(1.03); }
+  to   { transform: translate3d(1.5%, -1%, 0) scale(1.07); }
+}
+
+/* Three consistent project cards, while leaving other sections alone. */
+#current .cards {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: clamp(16px, 2vw, 28px);
+  align-items: stretch;
+}
+#current .card { display: flex; flex-direction: column; min-width: 0; }
+#current .card .visual { min-height: 240px; position: relative; overflow: hidden; }
+#current .card p { flex: 1; }
+#current .card .visual span {
+  display: inline-block;
+  max-width: calc(100% - 38px);
+  box-sizing: border-box;
+  overflow-wrap: break-word;
+}
+
+/* Data center card: the title MUST remain dark on the light label. */
+#current .visual.datacenter {
+  background: radial-gradient(ellipse at 85% 15%, rgba(207,222,202,.35), transparent 52%),
+              linear-gradient(135deg, #244f4b, #4d8178 57%, #9db5a5);
+}
+#current .visual.datacenter span {
+  color: #2e342e !important;
+  background: #f6f0e6;
+  padding: .38em .55em;
+}
+
+/* Tactile, accessible hover effects. */
+#current .card .visual { transition: filter .35s ease; }
+#current .card:hover .visual,
+#current .card:focus-visible .visual { filter: saturate(1.12) brightness(1.04); }
+#current .card:focus-visible { outline: 2px solid #b85e47; outline-offset: 5px; }
+
+@media (max-width: 920px) {
+  #current .cards { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+}
+@media (max-width: 640px) {
+  #current .cards { grid-template-columns: 1fr; }
+  #current .card .visual { min-height: 220px; }
+  .hero::before { inset: 0 -35% 0 0; opacity: .32; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .hero::before { animation: none; }
+  #current .card .visual { transition: none; }
+}
