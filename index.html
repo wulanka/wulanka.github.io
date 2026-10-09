@@ -1,687 +1,805 @@
 
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Wulan Kencana Adjani — energy systems, public policy and economic development portfolio.">
+  <title>Home | Wulan Kencana Adjani</title>
 
-<meta name="description" content="Wulan Kencana Adjani — energy systems, public policy and economic development portfolio.">
+  <link rel="stylesheet" href="assets/style.css">
+  <link rel="stylesheet" href="assets/homepage.css">
+  <link rel="stylesheet" href="assets/topographic.css">
 
-<title>Home | Wulan Kencana Adjani</title>
+  <style>
+    .hero h1.main-name {
+      font-family: "Bodoni Moda", Georgia, serif;
+      font-size: clamp(3.5rem, 7.5vw, 8rem);
+      font-weight: 500;
+      line-height: .95;
+      letter-spacing: -.055em;
+      margin: 20px 0 25px;
+    }
 
-<!-- Existing site-wide stylesheet -->
-<link rel="stylesheet" href="assets/style.css">
+    .hero .hero-name.degree-line {
+      font-family: "Bodoni Moda", Georgia, serif;
+      font-size: clamp(2rem, 3.5vw, 3.5rem);
+      font-style: italic;
+      font-weight: 500;
+      line-height: 1.1;
+      margin: 0 0 20px;
+    }
 
-<!-- New homepage-specific stylesheet -->
-<link rel="stylesheet" href="assets/homepage.css">
+    /* Project thumbnails and logos */
+    #current .cards {
+      align-items: stretch;
+    }
 
-<style>
-/* Name-first editorial homepage */
-.hero h1.main-name {
-  font-family: "Bodoni Moda", Georgia, serif;
-  font-size: clamp(3.5rem, 7.5vw, 8rem);
-  font-weight: 500;
-  line-height: .95;
-  letter-spacing: -.055em;
-  margin: 20px 0 25px;
-}
+    #current .current-project-item {
+      min-width: 0;
+      display: flex;
+      flex-direction: column;
+    }
 
-.hero .hero-name.degree-line {
-  font-family: "Bodoni Moda", Georgia, serif;
-  font-size: clamp(2rem, 3.5vw, 3.5rem);
-  font-style: italic;
-  font-weight: 500;
-  line-height: 1.1;
-  margin: 0 0 20px;
-}
+    #current .current-project-item > .card {
+      flex: 1;
+    }
 
-/* Three-column layout for current projects */
-#current .cards {
-  display: grid;
-  grid-template-columns: repeat(3, minmax(0, 1fr));
-  gap: 24px;
-  align-items: stretch;
-}
+    #current .visual {
+      position: relative;
+      isolation: isolate;
+    }
 
-#current .card {
-  display: flex;
-  flex-direction: column;
-  min-width: 0;
-}
+    #current .visual .project-cover {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      z-index: -1;
+      transition: transform .55s ease;
+    }
 
-#current .card .visual {
-  min-height: 230px;
-}
+    #current .visual::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(
+        180deg,
+        transparent 28%,
+        rgba(14, 35, 33, .32)
+      );
+      z-index: -1;
+      pointer-events: none;
+    }
 
-#current .card p {
-  flex-grow: 1;
-  line-height: 1.7;
-}
+    #current .card:hover .project-cover {
+      transform: scale(1.055);
+    }
 
-/* New Michigan data center project visual */
-#current .visual.datacenter {
-  background:
-    radial-gradient(
-      circle at 78% 24%,
-      rgba(225, 206, 166, .36),
-      transparent 43%
-    ),
-    linear-gradient(
-      135deg,
-      #274e4b 0%,
-      #427b74 55%,
-      #a0b8a4 100%
-    );
-  color: #f8f1e6;
-}
+    #current .visual span {
+      position: relative;
+      z-index: 1;
+    }
 
-#current .visual.datacenter span {
-  color: inherit;
-}
+    #current .visual.datacenter span {
+      color: #2e342e !important;
+      background: #f6f0e6;
+    }
 
-/* Responsive current-project cards */
-@media (max-width: 900px) {
-  #current .cards {
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-  }
-}
+    #current .affiliation-strip {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      padding: 12px 4px 0;
+      min-height: 65px;
+    }
 
-@media (max-width: 600px) {
-  #current .cards {
-    grid-template-columns: 1fr;
-  }
+    #current .affiliation-strip a {
+      display: flex;
+      align-items: center;
+      justify-content: flex-start;
+      padding: 6px;
+      background: #fffaf3;
+      border: 1px solid #e5e2da;
+      border-radius: 6px;
+      min-height: 43px;
+      max-width: 48%;
+    }
 
-  #current .card .visual {
-    min-height: 210px;
-  }
-}
-</style>
+    #current .affiliation-strip img {
+      max-height: 37px;
+      max-width: 100%;
+      width: auto;
+      object-fit: contain;
+    }
+
+    /* Data center guidebook reference */
+    .featured-reference {
+      display: grid;
+      grid-template-columns: 150px minmax(0, 1fr);
+      gap: 26px;
+      align-items: center;
+      margin-top: 42px;
+      padding: 22px;
+      background: #f4f0e8;
+      border: 1px solid #e4ded2;
+      border-radius: 12px;
+    }
+
+    .reference-thumb {
+      display: block;
+      width: 100%;
+      overflow: hidden;
+      border-radius: 5px;
+      box-shadow: 0 5px 16px #253e3924;
+    }
+
+    .reference-thumb img {
+      display: block;
+      width: 100%;
+      height: auto;
+    }
+
+    .reference-copy h3 {
+      margin: 10px 0;
+      font-family: "Bodoni Moda", Georgia, serif;
+      font-size: clamp(1.3rem, 2.3vw, 1.9rem);
+      line-height: 1.18;
+    }
+
+    .reference-copy p {
+      margin: 0 0 12px;
+      line-height: 1.65;
+    }
+
+    .reference-link {
+      color: #a35440;
+      font-weight: 650;
+      text-decoration: underline;
+      text-underline-offset: 4px;
+    }
+
+    @media (max-width: 640px) {
+      .featured-reference {
+        grid-template-columns: 100px minmax(0, 1fr);
+        gap: 14px;
+        padding: 14px;
+      }
+
+      .reference-copy h3 {
+        font-size: 1.15rem;
+      }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      #current .visual .project-cover {
+        transition: none;
+      }
+    }
+  </style>
 </head>
 
 <body>
-<div class="wrap">
+  <div class="wrap">
 
-<!-- NAVIGATION -->
-<header class="topbar">
-  <a class="logo" href="index.html">WKA.</a>
+    <header class="topbar">
+      <a class="logo" href="index.html">WKA.</a>
 
-  <nav class="nav">
-    <a href="index.html#current">Current</a>
-    <a href="index.html#projects">Research</a>
-    <a href="index.html#experience">Experience</a>
-    <a href="index.html#publications">Publications</a>
-    <a class="other-link" href="art.html">The other side ↗</a>
-  </nav>
-</header>
+      <nav class="nav" aria-label="Main navigation">
+        <a href="index.html#current">Current</a>
+        <a href="index.html#projects">Research</a>
+        <a href="index.html#experience">Experience</a>
+        <a href="index.html#publications">Publications</a>
+        <a class="other-link" href="art.html">The other side ↗</a>
+      </nav>
+    </header>
 
-<main>
+    <main>
 
-<!-- HERO -->
-<section class="hero">
-  <div>
-    <div class="eyebrow">
-      University of Michigan · Class of 2026
-    </div>
+      <!-- HERO -->
+      <section class="hero">
+        <div>
+          <div class="eyebrow">
+            University of Michigan · Class of 2026
+          </div>
 
-    <h1 class="main-name">
-      Wulan<br>
-      <span class="rust">Kencana</span><br>
-      Adjani<span class="teal">.</span>
-    </h1>
+          <h1 class="main-name">
+            Wulan<br>
+            <span class="rust">Kencana</span><br>
+            Adjani<span class="teal">.</span>
+          </h1>
 
-    <p class="hero-name degree-line">
-      <span class="rust">MPP</span>
-      &amp;
-      <span class="teal">MS ’26</span>
-    </p>
+          <p class="hero-name degree-line">
+            <span class="rust">MPP</span>
+            &amp;
+            <span class="teal">MS ’26</span>
+          </p>
 
-    <p class="topics">
-      Energy systems / Public policy / Economic development
-    </p>
-  </div>
+          <p class="topics">
+            Energy systems / Public policy / Economic development
+          </p>
+        </div>
 
-  <div
-    class="photo-placeholder"
-    role="img"
-    aria-label="Placeholder for Wulan's portrait"
-  >
-    <span>Your photo goes here ↗</span>
-  </div>
-</section>
+        <div
+          class="photo-placeholder"
+          role="img"
+          aria-label="Placeholder for Wulan's portrait"
+        >
+          <span>Your photo goes here ↗</span>
+        </div>
+      </section>
 
+      <!-- ABOUT -->
+      <section class="section about" id="about">
+        <div>
+          <div class="section-label">
+            <b>01 /</b> About
+          </div>
 
-<!-- 01 / ABOUT -->
-<section class="section about" id="about">
-  <div>
-    <div class="section-label">
-      <b>01 /</b> About
-    </div>
+          <h2>
+            A little<br>
+            <em>about me.</em>
+          </h2>
+        </div>
 
-    <h2>
-      A little<br>
-      <em>about me.</em>
-    </h2>
-  </div>
+        <div>
+          <p>
+            I'm a dual-degree graduate student at the
+            University of Michigan, pursuing a Master of
+            Public Policy (MPP) in International Economic
+            Development and a Master of Science (MS) in
+            Environment and Sustainability, focusing on
+            energy systems.
+          </p>
 
-  <div>
-    <p>
-      I'm a dual-degree graduate student at the University
-      of Michigan, pursuing a Master of Public Policy (MPP)
-      in International Economic Development and a Master
-      of Science (MS) in Environment and Sustainability,
-      focusing on energy systems.
-    </p>
+          <p>
+            My work spans local and international projects
+            across the United States, Latin America,
+            Southeast Asia, and South Korea, bringing
+            together policy research, technical analysis,
+            and cross-sector collaboration. I'm interested
+            in how energy, technology, and economic
+            development intersect, and how different policy
+            and institutional contexts shape approaches
+            to sustainable development.
+          </p>
+        </div>
+      </section>
 
-    <p>
-      My work spans local and international projects across
-      the United States, Latin America, Southeast Asia,
-      and South Korea, bringing together policy research,
-      technical analysis, and cross-sector collaboration.
-      I'm interested in how energy, technology, and
-      economic development intersect, and how different
-      policy and institutional contexts shape approaches
-      to sustainable development.
-    </p>
-  </div>
-</section>
+      <!-- CURRENT PROJECTS -->
+      <section class="section" id="current">
+        <div class="section-head">
+          <div class="section-label">
+            <b>02 /</b> What I'm working on
+          </div>
+        </div>
 
+        <div class="cards">
 
-<!-- 02 / WHAT I'M WORKING ON -->
-<section class="section" id="current">
+          <!-- WAYNE COUNTY -->
+          <div class="current-project-item">
+            <a
+              class="card project-card"
+              href="projects/wayne.html"
+            >
+              <div class="visual industry">
+                <img
+                  class="project-cover"
+                  src="assets/project asset/wayne county/wayne-county.jpg"
+                  alt="Industrial decarbonization landscape illustration"
+                  loading="lazy"
+                >
 
-  <div class="section-head">
-    <div class="section-label">
-      <b>02 /</b> What I'm working on
-    </div>
-  </div>
+                <span>
+                  Industrial Decarbonization in Wayne County
+                </span>
+              </div>
 
-  <div class="cards">
+              <div class="tag">
+                Dow Sustainability Fellows Program
+              </div>
 
-    <!-- WAYNE COUNTY -->
-    <a class="card" href="projects/wayne.html">
+              <p>
+                Working with Wayne County to examine
+                industrial decarbonization opportunities
+                through facility-level emissions analysis,
+                economic feasibility, and policy pathways.
+              </p>
 
-      <div class="visual industry">
-        <span>
-          Industrial Decarbonization
-          in Wayne County
-        </span>
-      </div>
+              <span class="tag">Explore research ↗</span>
+            </a>
 
-      <div class="tag">
-        Dow Sustainability Fellows Program
-      </div>
+            <div class="affiliation-strip">
+              <a
+                href="https://graham.umich.edu/dow/fellows/current"
+                target="_blank"
+                rel="noopener"
+                title="Dow Sustainability Fellows"
+              >
+                <img
+                  src="assets/project asset/wayne county/dow sustainability fellows program.jpeg"
+                  alt="Dow Sustainability Fellows"
+                  loading="lazy"
+                >
+              </a>
 
-      <p>
-        Working with Wayne County to examine industrial
-        decarbonization opportunities through facility-level
-        emissions analysis, economic feasibility, and
-        policy pathways.
-      </p>
+              <a
+                href="https://graham.umich.edu/"
+                target="_blank"
+                rel="noopener"
+                title="Graham Sustainability Institute"
+              >
+                <img
+                  src="assets/project asset/wayne county/graham sustainability institute logo.jpeg"
+                  alt="Graham Sustainability Institute"
+                  loading="lazy"
+                >
+              </a>
+            </div>
+          </div>
 
-      <span class="tag">
-        Explore research ↗
+          <!-- DECARBATLAS -->
+          <div class="current-project-item">
+            <a
+              class="card project-card"
+              href="projects/decarbatlas.html"
+            >
+              <div class="visual atlas">
+                <img
+                  class="project-cover"
+                  src="assets/project asset/decarb atlas/decarbatlas.jpg"
+                  alt="Geospatial decarbonization concept artwork"
+                  loading="lazy"
+                >
+
+                <span>DecarbAtlas</span>
+              </div>
+
+              <div class="tag">
+                Selected venture · ZLI Product Innovation Program
+              </div>
+
+              <p>
+                Developing a geospatial decision-support
+                platform connecting industrial emissions
+                with decarbonization technologies,
+                infrastructure, financing, and policy incentives.
+              </p>
+
+              <span class="tag">Explore project ↗</span>
+            </a>
+
+            <div class="affiliation-strip">
+              <a
+                href="https://zli.umich.edu/program/product-innovation-program/"
+                target="_blank"
+                rel="noopener"
+                title="Zell Lurie Institute"
+              >
+                <img
+                  src="assets/project asset/decarb atlas/zell lurie institute logo.jpeg"
+                  alt="Zell Lurie Institute"
+                  loading="lazy"
+                >
+              </a>
+            </div>
+          </div>
+
+          <!-- DATA CENTER -->
+          <div class="current-project-item">
+            <a
+              class="card project-card"
+              href="projects/data-center.html"
+            >
+              <div class="visual datacenter">
+                <img
+                  class="project-cover"
+                  src="assets/project asset/data center mcda/data-center.jpg"
+                  alt="Michigan data center suitability concept artwork"
+                  loading="lazy"
+                >
+
+                <span>
+                  Data Center Siting &amp; Suitability
+                </span>
+              </div>
+
+              <div class="tag">
+                Ongoing Research · GIS / MCDA / Michigan
+              </div>
+
+              <p>
+                Mapping data center development suitability
+                across Michigan using GIS-based multi-criteria
+                analysis to evaluate energy infrastructure,
+                environmental constraints, and local
+                policy conditions.
+              </p>
+
+              <span class="tag">Explore research ↗</span>
+            </a>
+          </div>
+
+        </div>
+
+        <!-- DATA CENTER GUIDEBOOK REFERENCE -->
+        <div class="featured-reference">
+
+          <a
+            class="reference-thumb"
+            href="https://graham.umich.edu/product/michigan-data-centers-guide"
+            target="_blank"
+            rel="noopener"
+          >
+            <img
+              src="assets/project asset/data center mcda/michigan-data-center-guide-cover.png"
+              alt="Cover of What Michigan Local Governments Should Know About Data Centers, February 2026"
+              loading="lazy"
+            >
+          </a>
+
+          <div class="reference-copy">
+            <div class="section-label">
+              <b>RESEARCH REFERENCE /</b> DATA CENTER SITING
+            </div>
+
+            <h3>
+              What Michigan Local Governments Should
+              Know About Data Centers
+            </h3>
+
+            <p>
+              University of Michigan Center for EmPowering
+              Communities · February 2026.
+              A practical guide to environmental and economic
+              impacts, zoning, and local policy considerations.
+              Included as a reference informing the policy
+              context of my ongoing GIS-MCDA research;
+              this is not my publication.
+            </p>
+
+            <a
+              class="reference-link"
+              href="https://graham.umich.edu/product/michigan-data-centers-guide"
+              target="_blank"
+              rel="noopener"
+            >
+              View the official guide ↗
+            </a>
+          </div>
+        </div>
+      </section>
+
+      <!-- SELECTED PROJECTS -->
+      <section class="section" id="projects">
+        <div class="section-head">
+          <div>
+            <div class="section-label">
+              <b>03 /</b> Research
+            </div>
+
+            <h2>
+              Selected Projects<br>
+              <em>&amp; Research.</em>
+            </h2>
+          </div>
+        </div>
+
+        <div class="projects">
+
+          <a class="card" href="projects/coldwater.html">
+            <div class="visual solar" aria-hidden="true">
+              <span>Coldwater Solar Carport</span>
+            </div>
+
+            <h3>
+              Coldwater Solar Carport
+              <span class="arrow">↗</span>
+            </h3>
+
+            <div class="tag">Feasibility study</div>
+          </a>
+
+          <a class="card" href="projects/mobility.html">
+            <div class="visual bus" aria-hidden="true">
+              <span>Zero-Emission Mobility</span>
+            </div>
+
+            <h3>
+              Zero-Emission Mobility
+              <span class="arrow">↗</span>
+            </h3>
+
+            <div class="tag">Lifecycle analysis</div>
+          </a>
+
+          <a class="card" href="projects/virginia.html">
+            <div class="visual virginia" aria-hidden="true">
+              <span>Virginia Energy Planning</span>
+            </div>
+
+            <h3>
+              Virginia Energy Planning
+              <span class="arrow">↗</span>
+            </h3>
+
+            <div class="tag">GIS &amp; energy analysis</div>
+          </a>
+
+          <a class="card" href="projects/nuclear.html">
+            <div class="visual nuclear" aria-hidden="true">
+              <span>Nuclear Plant Lifecycle</span>
+            </div>
+
+            <h3>
+              Nuclear Plant Lifecycle
+              <span class="arrow">↗</span>
+            </h3>
+
+            <div class="tag">MCDA &amp; decision analysis</div>
+          </a>
+
+        </div>
+      </section>
+
+      <!-- EXPERIENCE -->
+      <section class="section" id="experience">
+        <div class="section-head">
+          <div>
+            <div class="section-label">
+              <b>04 /</b> Background
+            </div>
+
+            <h2>Experience.</h2>
+          </div>
+        </div>
+
+        <div class="timeline">
+
+          <div class="entry">
+            <span class="date">2026</span>
+            <div>
+              <h3>U.S. Climate Alliance</h3>
+              <p>
+                <strong>Policy Intern · Washington, DC</strong>
+              </p>
+              <p>
+                Climate and energy policy research across
+                member states, including heat-pump deployment
+                analysis and decarbonization funding.
+              </p>
+            </div>
+          </div>
+
+          <div class="entry">
+            <span class="date">2026</span>
+            <div>
+              <h3>Amazon Conservation Team</h3>
+              <p>
+                <strong>
+                  Graduate Research Intern · Latin America (remote)
+                </strong>
+              </p>
+              <p>
+                Stakeholder analysis and advocacy research
+                on Indigenous and local community representation.
+              </p>
+            </div>
+          </div>
+
+          <div class="entry">
+            <span class="date">2025</span>
+            <div>
+              <h3>Coldwater Board of Public Utilities</h3>
+              <p>
+                <strong>Graduate Research Fellow · Michigan</strong>
+              </p>
+              <p>
+                Solar carport design, energy modeling,
+                techno-economic feasibility, and a municipal
+                implementation guide.
+              </p>
+            </div>
+          </div>
+
+          <div class="entry">
+            <span class="date">2023–2024</span>
+            <div>
+              <h3>
+                Korea Automotive Technology Institute (KATECH)
+              </h3>
+              <p>
+                <strong>Research Assistant · Indonesia</strong>
+              </p>
+              <p>
+                Electric mobility markets, infrastructure
+                and cross-border energy-sector collaboration.
+              </p>
+            </div>
+          </div>
+
+          <div class="entry">
+            <span class="date">2022–2023</span>
+            <div>
+              <h3>
+                Korea Trade-Investment Promotion Agency (KOTRA)
+              </h3>
+              <p>
+                <strong>Business Support Specialist · Indonesia</strong>
+              </p>
+              <p>
+                Industry research and cross-border partnerships
+                across electric mobility, renewables
+                and emerging sectors.
+              </p>
+            </div>
+          </div>
+
+        </div>
+      </section>
+
+      <!-- PUBLICATIONS -->
+      <section class="section" id="publications">
+        <div class="section-head">
+          <div>
+            <div class="section-label">
+              <b>05 /</b> Writing
+            </div>
+
+            <h2>
+              Publications <em>&amp; presentations.</em>
+            </h2>
+          </div>
+        </div>
+
+        <div class="publications">
+
+          <div class="entry">
+            <span class="date">
+              2026 · UNDER JOURNAL REVIEW
+            </span>
+
+            <div>
+              <h3>Strategic Public Participation Design</h3>
+              <p>
+                ASPA Annual Conference presentation ·
+                Co-authored manuscript under journal review.
+              </p>
+            </div>
+          </div>
+
+          <div class="entry">
+            <span class="date">2024 · PUBLISHED</span>
+
+            <div>
+              <h3>
+                Building a Robust International Carbon Crediting
+                Framework: Insights from Indonesia’s
+                Joint Crediting Mechanism
+              </h3>
+
+              <p>
+                IOP Conference Series: Earth and Environmental
+                Science · Presented at 3rd ASEAN International
+                Conference on Energy and Environment (2023).
+              </p>
+
+              <a
+                href="https://doi.org/10.1088/1755-1315/1395/1/012030"
+                target="_blank"
+                rel="noopener"
+              >
+                View publication ↗
+              </a>
+            </div>
+          </div>
+
+          <div class="entry">
+            <span class="date">2023 · PUBLISHED</span>
+
+            <div>
+              <h3>
+                Mapping Indonesia’s South-South Triangular
+                Cooperation Initiatives &amp; Potential:
+                Climate Adaptation and Mitigation
+              </h3>
+
+              <p>
+                Global South Review ·
+                Annual Convention on the Global South.
+              </p>
+
+              <a
+                href="https://doi.org/10.22146/globalsouth.91042"
+                target="_blank"
+                rel="noopener"
+              >
+                View publication ↗
+              </a>
+            </div>
+          </div>
+
+          <div class="entry">
+            <span class="date">
+              2022 · POLICY WHITE PAPER
+            </span>
+
+            <div>
+              <h3>
+                Indonesia–Republic of Korea
+                Young Professional Lab
+              </h3>
+
+              <p>
+                Economic Working Group contributor ·
+                Joint policy white paper for government stakeholders.
+              </p>
+            </div>
+          </div>
+
+          <div class="entry">
+            <span class="date">
+              2025 · IMPLEMENTATION GUIDE
+            </span>
+
+            <div>
+              <h3>Solar Carport Implementation Guide</h3>
+
+              <p>
+                Practical municipal implementation resource
+                developed during the Coldwater project.
+                Public download pending approval.
+              </p>
+            </div>
+          </div>
+
+        </div>
+      </section>
+
+      <!-- ART -->
+      <section class="art-cta">
+        <div>
+          <div class="tag">Beyond the research</div>
+
+          <h2>
+            Same curiosity.<br>
+            <em>Different medium.</em>
+          </h2>
+        </div>
+
+        <div>
+          <p>
+            Paintings, illustrations, stories,
+            and other things I make.
+          </p>
+
+          <a class="button" href="art.html">
+            Explore the other side →
+          </a>
+        </div>
+      </section>
+
+    </main>
+
+    <!-- FOOTER -->
+    <footer>
+      <span>
+        © 2026 Wulan Kencana Adjani · Made with curiosity.
       </span>
 
-    </a>
-
-
-    <!-- DECARBATLAS -->
-    <a class="card" href="projects/decarbatlas.html">
-
-      <div class="visual atlas">
-        <span>DecarbAtlas</span>
-      </div>
-
-      <div class="tag">
-        Selected Venture · ZLI Product Innovation Program
-      </div>
-
-      <p>
-        Developing a geospatial decision-support platform
-        connecting industrial emissions with decarbonization
-        technologies, infrastructure, financing, and
-        policy incentives.
-      </p>
-
-      <span class="tag">
-        Explore project ↗
-      </span>
-
-    </a>
-
-
-    <!-- MICHIGAN DATA CENTER RESEARCH -->
-    <a class="card" href="projects/data-center.html">
-
-      <div class="visual datacenter">
-        <span>
-          Data Center Siting
-          &amp; Suitability
-        </span>
-      </div>
-
-      <div class="tag">
-        Ongoing Research · GIS / MCDA / Michigan
-      </div>
-
-      <p>
-        Mapping data center development suitability
-        across Michigan using GIS-based multi-criteria
-        analysis to evaluate energy infrastructure,
-        environmental constraints, and local
-        policy conditions.
-      </p>
-
-      <span class="tag">
-        Explore research ↗
-      </span>
-
-    </a>
-
-  </div>
-</section>
-
-
-<!-- 03 / SELECTED PROJECTS & RESEARCH -->
-<section class="section" id="projects">
-
-  <div class="section-head">
-    <div>
-      <div class="section-label">
-        <b>03 /</b> Research
-      </div>
-
-      <h2>
-        Selected Projects<br>
-        <em>&amp; Research.</em>
-      </h2>
-    </div>
-  </div>
-
-  <div class="projects">
-
-    <!-- COLDWATER -->
-    <a class="card" href="projects/coldwater.html">
-      <div class="visual solar" aria-hidden="true">
-        <span>Coldwater Solar Carport</span>
-      </div>
-
-      <h3>
-        Coldwater Solar Carport
-        <span class="arrow">↗</span>
-      </h3>
-
-      <div class="tag">Feasibility study</div>
-    </a>
-
-
-    <!-- ZERO-EMISSION MOBILITY -->
-    <a class="card" href="projects/mobility.html">
-      <div class="visual bus" aria-hidden="true">
-        <span>Zero-Emission Mobility</span>
-      </div>
-
-      <h3>
-        Zero-Emission Mobility
-        <span class="arrow">↗</span>
-      </h3>
-
-      <div class="tag">Lifecycle analysis</div>
-    </a>
-
-
-    <!-- VIRGINIA ENERGY PLANNING -->
-    <a class="card" href="projects/virginia.html">
-      <div class="visual virginia" aria-hidden="true">
-        <span>Virginia Energy Planning</span>
-      </div>
-
-      <h3>
-        Virginia Energy Planning
-        <span class="arrow">↗</span>
-      </h3>
-
-      <div class="tag">
-        GIS &amp; energy analysis
-      </div>
-    </a>
-
-
-    <!-- NUCLEAR PLANT LIFECYCLE -->
-    <a class="card" href="projects/nuclear.html">
-      <div class="visual nuclear" aria-hidden="true">
-        <span>Nuclear Plant Lifecycle</span>
-      </div>
-
-      <h3>
-        Nuclear Plant Lifecycle
-        <span class="arrow">↗</span>
-      </h3>
-
-      <div class="tag">
-        MCDA &amp; decision analysis
-      </div>
-    </a>
-
-  </div>
-</section>
-
-
-<!-- 04 / EXPERIENCE -->
-<section class="section" id="experience">
-
-  <div class="section-head">
-    <div>
-      <div class="section-label">
-        <b>04 /</b> Background
-      </div>
-
-      <h2>Experience.</h2>
-    </div>
-  </div>
-
-  <div class="timeline">
-
-    <div class="entry">
-      <span class="date">2026</span>
-
-      <div>
-        <h3>U.S. Climate Alliance</h3>
-
-        <p>
-          <strong>
-            Policy Intern · Washington, DC
-          </strong>
-        </p>
-
-        <p>
-          Climate and energy policy research across member
-          states, including heat-pump deployment analysis
-          and decarbonization funding.
-        </p>
-      </div>
-    </div>
-
-
-    <div class="entry">
-      <span class="date">2026</span>
-
-      <div>
-        <h3>Amazon Conservation Team</h3>
-
-        <p>
-          <strong>
-            Graduate Research Intern · Latin America (remote)
-          </strong>
-        </p>
-
-        <p>
-          Stakeholder analysis and advocacy research on
-          Indigenous and local community representation.
-        </p>
-      </div>
-    </div>
-
-
-    <div class="entry">
-      <span class="date">2025</span>
-
-      <div>
-        <h3>Coldwater Board of Public Utilities</h3>
-
-        <p>
-          <strong>
-            Graduate Research Fellow · Michigan
-          </strong>
-        </p>
-
-        <p>
-          Solar carport design, energy modeling,
-          techno-economic feasibility, and a
-          municipal implementation guide.
-        </p>
-      </div>
-    </div>
-
-
-    <div class="entry">
-      <span class="date">2023–2024</span>
-
-      <div>
-        <h3>
-          Korea Automotive Technology Institute (KATECH)
-        </h3>
-
-        <p>
-          <strong>
-            Research Assistant · Indonesia
-          </strong>
-        </p>
-
-        <p>
-          Electric mobility markets, infrastructure
-          and cross-border energy-sector collaboration.
-        </p>
-      </div>
-    </div>
-
-
-    <div class="entry">
-      <span class="date">2022–2023</span>
-
-      <div>
-        <h3>
-          Korea Trade-Investment Promotion Agency (KOTRA)
-        </h3>
-
-        <p>
-          <strong>
-            Business Support Specialist · Indonesia
-          </strong>
-        </p>
-
-        <p>
-          Industry research and cross-border partnerships
-          across electric mobility, renewables and
-          emerging sectors.
-        </p>
-      </div>
-    </div>
-
-  </div>
-</section>
-
-
-<!-- 05 / PUBLICATIONS -->
-<section class="section" id="publications">
-
-  <div class="section-head">
-    <div>
-      <div class="section-label">
-        <b>05 /</b> Writing
-      </div>
-
-      <h2>
-        Publications
-        <em>&amp; presentations.</em>
-      </h2>
-    </div>
-  </div>
-
-  <div class="publications">
-
-    <!-- 2026 -->
-    <div class="entry">
-      <span class="date">
-        2026 · UNDER JOURNAL REVIEW
-      </span>
-
-      <div>
-        <h3>Strategic Public Participation Design</h3>
-
-        <p>
-          ASPA Annual Conference presentation ·
-          Co-authored manuscript under journal review.
-        </p>
-      </div>
-    </div>
-
-
-    <!-- 2024 -->
-    <div class="entry">
-      <span class="date">
-        2024 · PUBLISHED
-      </span>
-
-      <div>
-        <h3>
-          Building a Robust International Carbon Crediting
-          Framework: Insights from Indonesia’s Joint
-          Crediting Mechanism
-        </h3>
-
-        <p>
-          IOP Conference Series: Earth and Environmental
-          Science · Presented at 3rd ASEAN International
-          Conference on Energy and Environment (2023).
-        </p>
-
+      <span>
+        <a href="mailto:Wulanka@umich.edu">Email</a>
         <a
-          href="https://doi.org/10.1088/1755-1315/1395/1/012030"
+          href="https://www.linkedin.com/"
           target="_blank"
           rel="noopener"
         >
-          View publication ↗
+          LinkedIn ↗
         </a>
-      </div>
-    </div>
-
-
-    <!-- 2023 -->
-    <div class="entry">
-      <span class="date">
-        2023 · PUBLISHED
       </span>
-
-      <div>
-        <h3>
-          Mapping Indonesia’s South-South Triangular
-          Cooperation Initiatives &amp; Potential:
-          Climate Adaptation and Mitigation
-        </h3>
-
-        <p>
-          Global South Review · Annual Convention
-          on the Global South.
-        </p>
-
-        <a
-          href="https://doi.org/10.22146/globalsouth.91042"
-          target="_blank"
-          rel="noopener"
-        >
-          View publication ↗
-        </a>
-      </div>
-    </div>
-
-
-    <!-- 2022 -->
-    <div class="entry">
-      <span class="date">
-        2022 · POLICY WHITE PAPER
-      </span>
-
-      <div>
-        <h3>
-          Indonesia–Republic of Korea
-          Young Professional Lab
-        </h3>
-
-        <p>
-          Economic Working Group contributor ·
-          Joint policy white paper for government
-          stakeholders.
-        </p>
-      </div>
-    </div>
-
-
-    <!-- 2025 GUIDE -->
-    <div class="entry">
-      <span class="date">
-        2025 · IMPLEMENTATION GUIDE
-      </span>
-
-      <div>
-        <h3>
-          Solar Carport Implementation Guide
-        </h3>
-
-        <p>
-          Practical municipal implementation resource
-          developed during the Coldwater project.
-          Public download pending approval.
-        </p>
-      </div>
-    </div>
+    </footer>
 
   </div>
-</section>
-
-
-<!-- ART / CREATIVE WORK -->
-<section class="art-cta">
-
-  <div>
-    <div class="tag">Beyond the research</div>
-
-    <h2>
-      Same curiosity.<br>
-      <em>Different medium.</em>
-    </h2>
-  </div>
-
-  <div>
-    <p>
-      Paintings, illustrations, stories,
-      and other things I make.
-    </p>
-
-    <a class="button" href="art.html">
-      Explore the other side →
-    </a>
-  </div>
-
-</section>
-
-</main>
-
-
-<!-- FOOTER -->
-<footer>
-
-  <span>
-    © 2026 Wulan Kencana Adjani ·
-    Made with curiosity.
-  </span>
-
-  <span>
-    <a href="mailto:Wulanka@umich.edu">
-      Email
-    </a>
-
-    <a
-      href="https://www.linkedin.com/"
-      target="_blank"
-      rel="noopener"
-    >
-      LinkedIn ↗
-    </a>
-  </span>
-
-</footer>
-
-</div>
 </body>
 </html>
