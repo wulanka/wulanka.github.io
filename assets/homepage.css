@@ -1,0 +1,45 @@
+/* Homepage-only enhancements. Load AFTER assets/style.css. */
+
+/* Three projects across on large screens */
+#current .cards {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 24px;
+  align-items: stretch;
+}
+
+#current .card {
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+  height: 100%;
+}
+
+#current .card .visual {
+  min-height: 220px;
+  box-sizing: border-box;
+}
+
+#current .card p {
+  flex: 1;
+  line-height: 1.65;
+}
+
+/* Third project: Michigan data center research */
+#current .visual.datacenter {
+  background: radial-gradient(circle at 78% 22%, rgba(235, 213, 177, .3), transparent 45%),
+              linear-gradient(135deg, #244b48 0%, #457b74 57%, #a3b8a7 100%);
+  color: #fff8ed;
+}
+
+#current .visual.datacenter span { color: inherit; }
+
+/* Adapt the cards to smaller screens */
+@media (max-width: 900px) {
+  #current .cards { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+}
+
+@media (max-width: 600px) {
+  #current .cards { grid-template-columns: 1fr; }
+  #current .card .visual { min-height: 205px; }
+}
