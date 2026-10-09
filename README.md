@@ -1,23 +1,20 @@
-# Wulan's portfolio — GitHub Pages
+# Wulan Kencana Adjani — Portfolio
 
-A static website: HTML + CSS, no build tools needed.
+Personal portfolio website featuring my work in energy systems, public policy, economic development, and creative projects.
 
-## Publish
-1. Create a **public** repository named `YOURUSERNAME.github.io` on GitHub.
-2. Upload the **contents** of this folder (not the ZIP), keeping `index.html` at the repository root and the `assets` and `projects` folders intact.
-3. Go to **Settings → Pages → Build and deployment**. Choose **Deploy from a branch**, branch **main**, folder **/(root)**, then Save.
-4. Open `https://YOURUSERNAME.github.io/` after deployment completes.
+**Website:** https://wulanka.github.io
 
-## Edit
-- Homepage copy and links: `index.html`
-- Project pages: `projects/*.html`
-- Art page: `art.html`
-- Colors, typography, layout: `assets/style.css`
-- Replace the portrait placeholder by adding an image to `assets/` and replacing the `photo-placeholder` div in `index.html` with `<img src="assets/portrait.jpg" alt="Portrait of Wulan" class="portrait">`; then add `.portrait{width:100%;height:100%;object-fit:cover;}` to CSS (or size as desired).
-- Replace project gradient blocks with your own approved project photos/maps by adding CSS `background-image:url('filename.jpg')` to the appropriate `.visual` class, or replacing blocks with `<img>` tags.
-- Art page: replace the `.art-box` placeholders with your artwork images.
-- Update the LinkedIn URL in the footer in each HTML file (currently a generic LinkedIn link).
-- Verify publication DOIs and program names before public launch.
-- Confirm permissions before posting partner reports, guidebooks, maps or proprietary data.
+## About
 
-Google Fonts are loaded via CSS and need internet access. All other site content is static.
+I'm a dual-degree graduate student at the University of Michigan, pursuing an MPP in International Economic Development and an MS in Environment and Sustainability.
+
+This website brings together selected research projects, ongoing work, publications, professional experiences, and creative interests.
+
+## Website Structure
+
+- `index.html` — Homepage
+- `projects/` — Individual research and project pages
+- `art.html` — Creative work
+- `assets/` — Stylesheets, images, and other website assets
+
+Built with HTML and CSS and hosted through GitHub Pages.
