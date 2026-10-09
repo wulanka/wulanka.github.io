@@ -1,36 +1,17 @@
 
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-  <meta charset="UTF-8">
+  <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Wulan Kencana Adjani — energy systems, public policy and economic development portfolio.">
+  <title>Home | Wulan Kencana Adjani</title>
 
-  <meta name="description"
-    content="Wulan Kencana Adjani — public policy, energy systems, sustainability and economic development.">
-
-  <title>Wulan Kencana Adjani | Portfolio</title>
-
-  <!-- EXISTING WEBSITE STYLES -->
   <link rel="stylesheet" href="assets/style.css">
   <link rel="stylesheet" href="assets/homepage.css">
 
-  <!--
-    IMPORTANT:
-    The old topographic.css is intentionally NOT loaded.
-    This page contains the replacement interactive effect.
-  -->
-
   <style>
-
-    /* ==============================================
-       GENERAL REFINEMENTS
-    ============================================== */
-
-    html {
-      scroll-behavior: smooth;
-    }
-
+    /* HERO TYPOGRAPHY */
     .hero h1.main-name {
       font-family: "Bodoni Moda", Georgia, serif;
       font-size: clamp(3.5rem, 7.5vw, 8rem);
@@ -40,7 +21,7 @@
       margin: 20px 0 25px;
     }
 
-    .hero .degree-line {
+    .hero .hero-name.degree-line {
       font-family: "Bodoni Moda", Georgia, serif;
       font-size: clamp(2rem, 3.5vw, 3.5rem);
       font-style: italic;
@@ -49,155 +30,27 @@
       margin: 0 0 20px;
     }
 
-    /* ==============================================
-       INTERACTIVE TOPOGRAPHIC HERO
-
-       Uses the existing:
-       assets/topographic-lines.svg
-
-       The SVG moves with the cursor.
-       JavaScript updates the transform directly.
-    ============================================== */
-
-    .hero {
-      position: relative !important;
-      isolation: isolate;
-      overflow: hidden !important;
-      min-height: 580px;
-    }
-
-    /*
-      Remove conflicting pseudo-element effects
-      from previously uploaded stylesheets.
-    */
-
-    .hero::before,
-    .hero::after {
-      content: none !important;
-      display: none !important;
-      animation: none !important;
-    }
-
-    /*
-      A real DOM layer, not a CSS pseudo-element.
-      It sits behind the hero content.
-    */
-
-    .topo-stage {
-      position: absolute !important;
-      inset: 0;
-      z-index: 0 !important;
-      overflow: hidden;
-      pointer-events: none;
-      user-select: none;
-      background: transparent;
-    }
-
-    .topo-image {
-      position: absolute;
-      top: -28%;
-      left: -22%;
-      width: 144%;
-      height: 156%;
-      object-fit: cover;
-      display: block;
-      opacity: .68;
-      max-width: none;
-      pointer-events: none;
-      user-select: none;
-      transform: translate3d(0, 0, 0);
-      will-change: transform;
-    }
-
-    /*
-      Light overlay keeps the text readable.
-    */
-
-    .topo-stage::after {
-      content: "";
-      position: absolute;
-      inset: 0;
-      pointer-events: none;
-
-      background: linear-gradient(
-        90deg,
-        rgba(249, 246, 239, .45) 0%,
-        rgba(249, 246, 239, .16) 55%,
-        rgba(249, 246, 239, .08) 100%
-      );
-    }
-
-    /*
-      Interactive light that follows the cursor.
-    */
-
-    .topo-glow {
-      position: absolute;
-      z-index: 1;
-      top: 0;
-      left: 0;
-      width: 320px;
-      height: 320px;
-      border-radius: 50%;
-
-      background: radial-gradient(
-        circle,
-        rgba(77, 132, 118, .16),
-        rgba(179, 102, 77, .06) 42%,
-        transparent 72%
-      );
-
-      opacity: 0;
-      pointer-events: none;
-      transform: translate3d(-500px, -500px, 0);
-      will-change: transform;
-    }
-
-    /*
-      Everything else in the hero stays above
-      the moving background.
-    */
-
-    .hero > :not(.topo-stage):not(.topo-glow) {
-      position: relative !important;
-      z-index: 2 !important;
-    }
-
-    /*
-      Make sure portrait and text remain clickable.
-    */
-
-    .hero a,
-    .hero button {
-      position: relative;
-      z-index: 3;
-    }
-
-    /* ==============================================
-       CURRENT PROJECTS — THREE COLUMNS
-    ============================================== */
-
+    /* CURRENT PROJECT CARDS */
     #current .cards {
       display: grid;
       grid-template-columns: repeat(3, minmax(0, 1fr));
-      gap: clamp(16px, 2vw, 28px);
+      gap: 22px;
       align-items: stretch;
     }
 
     #current .current-project-item {
+      min-width: 0;
       display: flex;
       flex-direction: column;
-      min-width: 0;
     }
 
     #current .current-project-item > .card {
       flex: 1;
       display: flex;
       flex-direction: column;
-      min-width: 0;
     }
 
-    #current .card p {
+    #current .current-project-item > .card p {
       flex: 1;
     }
 
@@ -205,7 +58,7 @@
       position: relative;
       isolation: isolate;
       overflow: hidden;
-      min-height: 240px;
+      min-height: 230px;
     }
 
     #current .visual .project-cover {
@@ -222,317 +75,160 @@
       content: "";
       position: absolute;
       inset: 0;
-      z-index: -1;
-      pointer-events: none;
-
       background: linear-gradient(
         180deg,
-        transparent 25%,
-        rgba(14, 35, 33, .38)
+        transparent 28%,
+        rgba(14, 35, 33, .32)
       );
-    }
-
-    #current .visual span {
-      position: relative;
-      z-index: 1;
-      display: inline-block;
-      max-width: calc(100% - 35px);
-      overflow-wrap: break-word;
+      z-index: -1;
+      pointer-events: none;
     }
 
     #current .card:hover .project-cover {
       transform: scale(1.055);
     }
 
-    #current .card:focus-visible {
-      outline: 2px solid #b85e47;
-      outline-offset: 5px;
+    #current .visual span {
+      position: relative;
+      z-index: 1;
     }
 
     #current .visual.datacenter span {
       color: #2e342e !important;
       background: #f6f0e6;
-      padding: .38em .55em;
     }
 
-    /* ==============================================
-       INSTITUTIONAL LOGOS
-    ============================================== */
-
-    .affiliation-strip {
+    /* INSTITUTIONAL AFFILIATIONS */
+    #current .affiliation-strip {
       display: flex;
-      align-items: center;
       flex-wrap: wrap;
-      gap: 10px;
+      align-items: center;
+      gap: 12px;
       padding: 12px 4px 0;
       min-height: 65px;
     }
 
-    .affiliation-strip a {
+    #current .affiliation-strip a {
       display: flex;
       align-items: center;
       justify-content: center;
-      padding: 7px 10px;
-      min-height: 43px;
-      max-width: 48%;
-
+      padding: 6px;
       background: #fffaf3;
       border: 1px solid #e5e2da;
       border-radius: 6px;
-      transition: border-color .25s ease;
+      min-height: 43px;
+      max-width: 48%;
     }
 
-    .affiliation-strip a:hover {
-      border-color: #b85e47;
-    }
-
-    .affiliation-strip img {
-      display: block;
-      max-width: 100%;
+    #current .affiliation-strip img {
       max-height: 37px;
+      max-width: 100%;
       width: auto;
       height: auto;
       object-fit: contain;
     }
 
-    /* ==============================================
-       DATA CENTER GUIDEBOOK REFERENCE
-    ============================================== */
-
-    .featured-reference {
-      display: grid;
-      grid-template-columns: 155px minmax(0, 1fr);
-      gap: 28px;
-      align-items: center;
-
-      margin-top: 44px;
-      padding: 24px;
-
-      background: #f4f0e8;
-      border: 1px solid #e4ded2;
-      border-radius: 12px;
+    /* INTERACTIVE TOPOGRAPHIC BACKGROUND */
+    .hero {
+      position: relative !important;
+      isolation: isolate;
+      overflow: hidden !important;
+      min-height: 540px;
     }
 
-    /*
-      Styled publication thumbnail.
-      This is built directly into the HTML,
-      so it doesn't depend on another image upload.
-    */
-
-    .guide-cover {
-      display: flex;
-      flex-direction: column;
-      justify-content: space-between;
-      aspect-ratio: 3 / 4;
-      padding: 16px 13px;
-      box-sizing: border-box;
-
-      color: #f7f0e4;
-      background:
-        repeating-radial-gradient(
-          ellipse at 85% 80%,
-          transparent 0 13px,
-          rgba(210, 224, 212, .18) 14px 15px,
-          transparent 16px 27px
-        ),
-        linear-gradient(
-          145deg,
-          #244c49,
-          #52796f
-        );
-
-      border-radius: 4px;
-      box-shadow: 0 7px 20px rgba(26, 55, 49, .20);
-      text-decoration: none;
-      transition: transform .25s ease;
+    .hero::before,
+    .hero::after {
+      content: none !important;
+      display: none !important;
     }
 
-    .guide-cover:hover {
-      transform: translateY(-4px);
+    .hero .topo-stage {
+      position: absolute !important;
+      inset: 0 !important;
+      z-index: 0 !important;
+      overflow: hidden;
+      pointer-events: none;
     }
 
-    .guide-cover-title {
-      font-family: "Bodoni Moda", Georgia, serif;
-      font-size: clamp(1rem, 1.7vw, 1.3rem);
-      line-height: 1.12;
-      font-weight: 600;
+    .hero .topo-stage img {
+      position: absolute;
+      left: -22%;
+      top: -30%;
+      width: 144%;
+      height: 160%;
+      max-width: none;
+      object-fit: cover;
+      opacity: .65;
+      will-change: transform;
+      pointer-events: none;
     }
 
-    .guide-cover-bottom {
-      font-size: .65rem;
-      line-height: 1.4;
-      letter-spacing: .05em;
-      text-transform: uppercase;
+    .hero > :not(.topo-stage) {
+      position: relative !important;
+      z-index: 2 !important;
     }
-
-    .reference-copy h3 {
-      font-family: "Bodoni Moda", Georgia, serif;
-      font-size: clamp(1.35rem, 2.3vw, 1.9rem);
-      line-height: 1.18;
-      margin: 10px 0;
-    }
-
-    .reference-copy p {
-      line-height: 1.65;
-      margin: 0 0 14px;
-    }
-
-    .reference-link {
-      color: #a35440;
-      font-weight: 650;
-      text-decoration: underline;
-      text-underline-offset: 4px;
-    }
-
-    /* ==============================================
-       RESPONSIVE DESIGN
-    ============================================== */
 
     @media (max-width: 920px) {
-
       #current .cards {
         grid-template-columns: repeat(2, minmax(0, 1fr));
       }
-
-      .topo-image {
-        opacity: .48;
-      }
-
     }
 
     @media (max-width: 640px) {
-
-      .hero {
-        min-height: 500px;
-      }
-
-      .topo-image {
-        top: -15%;
-        left: -35%;
-        width: 170%;
-        height: 135%;
-        opacity: .36;
-      }
-
       #current .cards {
         grid-template-columns: 1fr;
       }
 
-      #current .visual {
-        min-height: 220px;
+      .hero .topo-stage img {
+        opacity: .38;
       }
-
-      .featured-reference {
-        grid-template-columns: 105px minmax(0, 1fr);
-        gap: 15px;
-        padding: 15px;
-      }
-
-      .reference-copy h3 {
-        font-size: 1.2rem;
-      }
-
-      .guide-cover {
-        padding: 10px;
-      }
-
-      .guide-cover-title {
-        font-size: .92rem;
-      }
-
-      .guide-cover-bottom {
-        font-size: .52rem;
-      }
-
-      .topo-glow {
-        display: none;
-      }
-
     }
 
     @media (prefers-reduced-motion: reduce) {
-
-      .topo-image {
-        will-change: auto;
-      }
-
-      .topo-glow {
-        display: none;
-      }
-
       #current .visual .project-cover {
         transition: none;
       }
 
-      html {
-        scroll-behavior: auto;
+      .hero .topo-stage img {
+        will-change: auto;
       }
-
     }
-
   </style>
 </head>
 
 <body>
-
   <div class="wrap">
 
-    <!-- ============================================
-         NAVIGATION
-    ============================================= -->
-
+    <!-- NAVIGATION -->
     <header class="topbar">
-
-      <a class="logo" href="index.html">
-        WKA.
-      </a>
+      <a class="logo" href="index.html">WKA.</a>
 
       <nav class="nav" aria-label="Main navigation">
-
         <a href="#current">Current</a>
         <a href="#projects">Research</a>
         <a href="#experience">Experience</a>
         <a href="#publications">Publications</a>
-
         <a class="other-link" href="art.html">
           The other side ↗
         </a>
-
       </nav>
-
     </header>
 
     <main>
 
-      <!-- ==========================================
-           HERO WITH INTERACTIVE TOPOGRAPHY
-      =========================================== -->
-
+      <!-- HERO -->
       <section class="hero" id="home">
 
-        <!-- Real topographic layer -->
         <div class="topo-stage" aria-hidden="true">
-
           <img
-            class="topo-image"
-            id="topoImage"
+            id="topo-image"
             src="assets/topographic-lines.svg"
             alt=""
             draggable="false"
           >
-
         </div>
 
-        <!-- Cursor-following glow -->
-        <div
-          class="topo-glow"
-          id="topoGlow"
-          aria-hidden="true"
-        ></div>
-
-        <!-- Hero text -->
-        <div class="hero-content">
-
+        <div>
           <div class="eyebrow">
             University of Michigan · Class of 2026
           </div>
@@ -543,7 +239,7 @@
             Adjani<span class="teal">.</span>
           </h1>
 
-          <p class="degree-line">
+          <p class="hero-name degree-line">
             <span class="rust">MPP</span>
             &amp;
             <span class="teal">MS ’26</span>
@@ -553,10 +249,8 @@
             Energy systems / Public policy /
             Economic development
           </p>
-
         </div>
 
-        <!-- Portrait placeholder -->
         <div
           class="photo-placeholder"
           role="img"
@@ -567,14 +261,10 @@
 
       </section>
 
-      <!-- ==========================================
-           ABOUT
-      =========================================== -->
-
+      <!-- ABOUT -->
       <section class="section about" id="about">
 
         <div>
-
           <div class="section-label">
             <b>01 /</b> About
           </div>
@@ -583,75 +273,63 @@
             A little<br>
             <em>about me.</em>
           </h2>
-
         </div>
 
         <div>
-
           <p>
             I'm a dual-degree graduate student at the
             University of Michigan, pursuing a Master
             of Public Policy (MPP) in International
             Economic Development and a Master of
-            Science (MS) in Environment and Sustainability,
-            focusing on energy systems.
+            Science (MS) in Environment and
+            Sustainability, focusing on energy systems.
           </p>
 
           <p>
-            My work spans local and international projects
-            across the United States, Latin America,
-            Southeast Asia, and South Korea, bringing
-            together policy research, technical analysis,
-            and cross-sector collaboration. I'm interested
+            My work spans local and international
+            projects across the United States,
+            Latin America, Southeast Asia, and
+            South Korea, bringing together policy
+            research, technical analysis, and
+            cross-sector collaboration. I'm interested
             in how energy, technology, and economic
             development intersect, and how different
             policy and institutional contexts shape
             approaches to sustainable development.
           </p>
-
         </div>
 
       </section>
 
-      <!-- ==========================================
-           CURRENT PROJECTS
-      =========================================== -->
-
+      <!-- CURRENT PROJECTS -->
       <section class="section" id="current">
 
         <div class="section-head">
-
           <div class="section-label">
             <b>02 /</b> What I'm working on
           </div>
-
         </div>
 
         <div class="cards">
 
           <!-- WAYNE COUNTY -->
-
           <div class="current-project-item">
 
             <a
               class="card project-card"
               href="projects/wayne.html"
             >
-
               <div class="visual industry">
-
                 <img
                   class="project-cover"
                   src="assets/project asset/wayne county/wayne-county.jpg"
-                  alt="Industrial decarbonization concept illustration"
+                  alt="Industrial decarbonization illustration"
                   loading="lazy"
                 >
-
                 <span>
                   Industrial Decarbonization
                   in Wayne County
                 </span>
-
               </div>
 
               <div class="tag">
@@ -661,14 +339,14 @@
               <p>
                 Working with Wayne County to examine
                 industrial decarbonization opportunities
-                through facility-level emissions analysis,
-                economic feasibility, and policy pathways.
+                through facility-level emissions
+                analysis, economic feasibility,
+                and policy pathways.
               </p>
 
               <span class="tag">
                 Explore research ↗
               </span>
-
             </a>
 
             <div class="affiliation-strip">
@@ -679,13 +357,11 @@
                 rel="noopener noreferrer"
                 title="Dow Sustainability Fellows Program"
               >
-
                 <img
                   src="assets/project asset/wayne county/dow sustainability fellows program.jpeg"
-                  alt="Dow Sustainability Fellows Program"
+                  alt="Dow Sustainability Fellows"
                   loading="lazy"
                 >
-
               </a>
 
               <a
@@ -694,45 +370,36 @@
                 rel="noopener noreferrer"
                 title="Graham Sustainability Institute"
               >
-
                 <img
                   src="assets/project asset/wayne county/graham sustainability institute logo.jpeg"
                   alt="Graham Sustainability Institute"
                   loading="lazy"
                 >
-
               </a>
 
             </div>
-
           </div>
 
           <!-- DECARBATLAS -->
-
           <div class="current-project-item">
 
             <a
               class="card project-card"
               href="projects/decarbatlas.html"
             >
-
               <div class="visual atlas">
-
                 <img
                   class="project-cover"
                   src="assets/project asset/decarb atlas/decarbatlas.jpg"
-                  alt="Geospatial decarbonization concept illustration"
+                  alt="Geospatial decarbonization illustration"
                   loading="lazy"
                 >
 
-                <span>
-                  DecarbAtlas
-                </span>
-
+                <span>DecarbAtlas</span>
               </div>
 
               <div class="tag">
-                ZLI Product Innovation Program
+                Selected venture · ZLI Product Innovation Program
               </div>
 
               <p>
@@ -746,45 +413,37 @@
               <span class="tag">
                 Explore project ↗
               </span>
-
             </a>
 
             <div class="affiliation-strip">
-
               <a
                 href="https://zli.umich.edu/program/product-innovation-program/"
                 target="_blank"
                 rel="noopener noreferrer"
                 title="Zell Lurie Institute"
               >
-
                 <img
                   src="assets/project asset/decarb atlas/zell lurie institute logo.jpeg"
                   alt="Zell Lurie Institute"
                   loading="lazy"
                 >
-
               </a>
-
             </div>
 
           </div>
 
-          <!-- DATA CENTER -->
-
+          <!-- DATA CENTER MCDA -->
           <div class="current-project-item">
 
             <a
               class="card project-card"
               href="projects/data-center.html"
             >
-
               <div class="visual datacenter">
-
                 <img
                   class="project-cover"
                   src="assets/project asset/data center mcda/data-center.jpg"
-                  alt="Michigan data center suitability concept illustration"
+                  alt="Michigan data center suitability illustration"
                   loading="lazy"
                 >
 
@@ -792,7 +451,6 @@
                   Data Center Siting
                   &amp; Suitability
                 </span>
-
               </div>
 
               <div class="tag">
@@ -800,102 +458,29 @@
               </div>
 
               <p>
-                Mapping data center development suitability
-                across Michigan using GIS-based multi-criteria
-                analysis to evaluate energy infrastructure,
-                environmental constraints, and local
-                policy conditions.
+                Mapping data center development
+                suitability across Michigan using
+                GIS-based multi-criteria analysis
+                to evaluate energy infrastructure,
+                environmental constraints, and
+                local policy conditions.
               </p>
 
               <span class="tag">
                 Explore research ↗
               </span>
-
             </a>
 
           </div>
 
         </div>
-
-        <!-- ========================================
-             DATA CENTER GUIDEBOOK REFERENCE
-        ========================================= -->
-
-        <div class="featured-reference">
-
-          <a
-            class="guide-cover"
-            href="https://graham.umich.edu/product/michigan-data-centers-guide"
-            target="_blank"
-            rel="noopener noreferrer"
-            aria-label="View the official Michigan data centers guidebook"
-          >
-
-            <span class="guide-cover-title">
-              What Michigan
-              Local Governments
-              Should Know
-              About Data Centers
-            </span>
-
-            <span class="guide-cover-bottom">
-              February 2026<br>
-              Research Guide ↗
-            </span>
-
-          </a>
-
-          <div class="reference-copy">
-
-            <div class="section-label">
-              <b>RESEARCH REFERENCE /</b>
-              DATA CENTER SITING
-            </div>
-
-            <h3>
-              What Michigan Local Governments
-              Should Know About Data Centers
-            </h3>
-
-            <p>
-              University of Michigan Center for
-              EmPowering Communities · February 2026.
-              A guide to the environmental, economic,
-              and local policy considerations surrounding
-              data center development in Michigan.
-            </p>
-
-            <p>
-              Included as an external reference for
-              my ongoing GIS-MCDA research, rather
-              than as one of my own publications.
-            </p>
-
-            <a
-              class="reference-link"
-              href="https://graham.umich.edu/product/michigan-data-centers-guide"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              Read the official guide ↗
-            </a>
-
-          </div>
-
-        </div>
-
       </section>
 
-      <!-- ==========================================
-           SELECTED PROJECTS
-      =========================================== -->
-
+      <!-- SELECTED PROJECTS -->
       <section class="section" id="projects">
 
         <div class="section-head">
-
           <div>
-
             <div class="section-label">
               <b>03 /</b> Research
             </div>
@@ -904,320 +489,216 @@
               Selected Projects<br>
               <em>&amp; Research.</em>
             </h2>
-
           </div>
-
         </div>
 
         <div class="projects">
 
-          <a
-            class="card"
-            href="projects/coldwater.html"
-          >
-
+          <a class="card" href="projects/coldwater.html">
             <div class="visual solar">
               <span>Coldwater Solar Carport</span>
             </div>
-
             <h3>
               Coldwater Solar Carport
               <span class="arrow">↗</span>
             </h3>
-
-            <div class="tag">
-              Feasibility study
-            </div>
-
+            <div class="tag">Feasibility study</div>
           </a>
 
-          <a
-            class="card"
-            href="projects/mobility.html"
-          >
-
+          <a class="card" href="projects/mobility.html">
             <div class="visual bus">
               <span>Zero-Emission Mobility</span>
             </div>
-
             <h3>
               Zero-Emission Mobility
               <span class="arrow">↗</span>
             </h3>
-
-            <div class="tag">
-              Lifecycle analysis
-            </div>
-
+            <div class="tag">Lifecycle analysis</div>
           </a>
 
-          <a
-            class="card"
-            href="projects/virginia.html"
-          >
-
+          <a class="card" href="projects/virginia.html">
             <div class="visual virginia">
               <span>Virginia Energy Planning</span>
             </div>
-
             <h3>
               Virginia Energy Planning
               <span class="arrow">↗</span>
             </h3>
-
-            <div class="tag">
-              GIS &amp; energy analysis
-            </div>
-
+            <div class="tag">GIS &amp; energy analysis</div>
           </a>
 
-          <a
-            class="card"
-            href="projects/nuclear.html"
-          >
-
+          <a class="card" href="projects/nuclear.html">
             <div class="visual nuclear">
               <span>Nuclear Plant Lifecycle</span>
             </div>
-
             <h3>
               Nuclear Plant Lifecycle
               <span class="arrow">↗</span>
             </h3>
-
-            <div class="tag">
-              MCDA &amp; decision analysis
-            </div>
-
+            <div class="tag">MCDA &amp; decision analysis</div>
           </a>
 
         </div>
-
       </section>
 
-      <!-- ==========================================
-           EXPERIENCE
-      =========================================== -->
-
+      <!-- EXPERIENCE -->
       <section class="section" id="experience">
 
         <div class="section-head">
-
           <div>
-
             <div class="section-label">
               <b>04 /</b> Background
             </div>
-
             <h2>Experience.</h2>
-
           </div>
-
         </div>
 
         <div class="timeline">
 
           <div class="entry">
-
             <span class="date">2026</span>
-
             <div>
-
               <h3>U.S. Climate Alliance</h3>
-
               <p>
                 <strong>
                   Policy Intern · Washington, DC
                 </strong>
               </p>
-
               <p>
                 Climate and energy policy research
                 across member states, including
-                heat-pump deployment analysis and
-                decarbonization funding.
+                heat-pump deployment analysis
+                and decarbonization funding.
               </p>
-
             </div>
-
           </div>
 
           <div class="entry">
-
             <span class="date">2026</span>
-
             <div>
-
               <h3>Amazon Conservation Team</h3>
-
               <p>
                 <strong>
                   Graduate Research Intern ·
                   Latin America (remote)
                 </strong>
               </p>
-
               <p>
                 Stakeholder analysis and advocacy
                 research on Indigenous and local
                 community representation.
               </p>
-
             </div>
-
           </div>
 
           <div class="entry">
-
             <span class="date">2025</span>
-
             <div>
-
               <h3>
                 Coldwater Board of Public Utilities
               </h3>
-
               <p>
                 <strong>
                   Graduate Research Fellow · Michigan
                 </strong>
               </p>
-
               <p>
                 Solar carport design, energy modeling,
                 techno-economic feasibility, and
                 a municipal implementation guide.
               </p>
-
             </div>
-
           </div>
 
           <div class="entry">
-
             <span class="date">2023–2024</span>
-
             <div>
-
               <h3>
                 Korea Automotive Technology Institute
                 (KATECH)
               </h3>
-
               <p>
                 <strong>
                   Research Assistant · Indonesia
                 </strong>
               </p>
-
               <p>
                 Electric mobility markets,
                 infrastructure and cross-border
                 energy-sector collaboration.
               </p>
-
             </div>
-
           </div>
 
           <div class="entry">
-
             <span class="date">2022–2023</span>
-
             <div>
-
               <h3>
-                Korea Trade-Investment Promotion
-                Agency (KOTRA)
+                Korea Trade-Investment Promotion Agency
+                (KOTRA)
               </h3>
-
               <p>
                 <strong>
                   Business Support Specialist · Indonesia
                 </strong>
               </p>
-
               <p>
                 Industry research and cross-border
                 partnerships across electric mobility,
                 renewables and emerging sectors.
               </p>
-
             </div>
-
           </div>
 
         </div>
-
       </section>
 
-      <!-- ==========================================
-           PUBLICATIONS
-      =========================================== -->
-
+      <!-- PUBLICATIONS -->
       <section class="section" id="publications">
 
         <div class="section-head">
-
           <div>
-
             <div class="section-label">
               <b>05 /</b> Writing
             </div>
-
             <h2>
               Publications
               <em>&amp; presentations.</em>
             </h2>
-
           </div>
-
         </div>
 
         <div class="publications">
 
           <div class="entry">
-
             <span class="date">
               2026 · UNDER JOURNAL REVIEW
             </span>
-
             <div>
-
               <h3>
                 Strategic Public Participation Design
               </h3>
-
               <p>
                 ASPA Annual Conference presentation ·
                 Co-authored manuscript under journal review.
               </p>
-
             </div>
-
           </div>
 
           <div class="entry">
-
-            <span class="date">
-              2024 · PUBLISHED
-            </span>
-
+            <span class="date">2024 · PUBLISHED</span>
             <div>
-
               <h3>
                 Building a Robust International Carbon
                 Crediting Framework: Insights from
                 Indonesia's Joint Crediting Mechanism
               </h3>
-
               <p>
-                IOP Conference Series:
-                Earth and Environmental Science ·
-                Presented at the 3rd ASEAN International
-                Conference on Energy and Environment.
+                IOP Conference Series: Earth and
+                Environmental Science · Presented at
+                the 3rd ASEAN International Conference
+                on Energy and Environment.
               </p>
-
               <a
                 href="https://doi.org/10.1088/1755-1315/1395/1/012030"
                 target="_blank"
@@ -1225,31 +706,22 @@
               >
                 View publication ↗
               </a>
-
             </div>
-
           </div>
 
           <div class="entry">
-
-            <span class="date">
-              2023 · PUBLISHED
-            </span>
-
+            <span class="date">2023 · PUBLISHED</span>
             <div>
-
               <h3>
                 Mapping Indonesia's South-South
                 Triangular Cooperation Initiatives
                 &amp; Potential: Climate Adaptation
                 and Mitigation
               </h3>
-
               <p>
-                Global South Review ·
-                Annual Convention on the Global South.
+                Global South Review · Annual Convention
+                on the Global South.
               </p>
-
               <a
                 href="https://doi.org/10.22146/globalsouth.91042"
                 target="_blank"
@@ -1257,110 +729,79 @@
               >
                 View publication ↗
               </a>
-
             </div>
-
           </div>
 
           <div class="entry">
-
             <span class="date">
               2022 · POLICY WHITE PAPER
             </span>
-
             <div>
-
               <h3>
                 Indonesia–Republic of Korea
                 Young Professional Lab
               </h3>
-
               <p>
                 Economic Working Group contributor ·
                 Joint policy white paper for
                 government stakeholders.
               </p>
-
             </div>
-
           </div>
 
           <div class="entry">
-
             <span class="date">
               2025 · IMPLEMENTATION GUIDE
             </span>
-
             <div>
-
               <h3>
                 Solar Carport Implementation Guide
               </h3>
-
               <p>
                 Practical municipal implementation
                 resource developed during the
                 Coldwater project.
                 Public download pending approval.
               </p>
-
             </div>
-
           </div>
 
         </div>
-
       </section>
 
-      <!-- ==========================================
-           ART SECTION
-      =========================================== -->
-
+      <!-- ART -->
       <section class="art-cta">
 
         <div>
-
-          <div class="tag">
-            Beyond the research
-          </div>
-
+          <div class="tag">Beyond the research</div>
           <h2>
             Same curiosity.<br>
             <em>Different medium.</em>
           </h2>
-
         </div>
 
         <div>
-
           <p>
             Paintings, illustrations, stories,
             and other things I make.
           </p>
-
           <a class="button" href="art.html">
             Explore the other side →
           </a>
-
         </div>
 
       </section>
 
     </main>
 
-    <!-- ============================================
-         FOOTER
-    ============================================= -->
-
+    <!-- FOOTER -->
     <footer>
-
       <span>
         © 2026 Wulan Kencana Adjani ·
         Made with curiosity.
       </span>
 
       <span>
-
         <a href="mailto:Wulanka@umich.edu">
           Email
         </a>
@@ -1372,267 +813,73 @@
         >
           LinkedIn ↗
         </a>
-
       </span>
-
     </footer>
 
   </div>
 
-  <!-- ==============================================
-       INTERACTIVE TOPOGRAPHY JAVASCRIPT
-
-       This script:
-       1. Tracks the cursor across the hero.
-       2. Moves the actual SVG layer.
-       3. Smoothly interpolates the position.
-       4. Adds subtle ambient motion.
-       5. Returns to center when the cursor leaves.
-  ============================================== -->
-
+  <!-- INTERACTIVE TOPOGRAPHY SCRIPT -->
   <script>
-    (function () {
-      "use strict";
+    (() => {
+      const hero = document.querySelector(".hero");
+      const img = document.getElementById("topo-image");
 
-      function initTopography() {
+      if (!hero || !img) return;
 
-        const hero = document.querySelector(".hero");
-        const image = document.getElementById("topoImage");
-        const glow = document.getElementById("topoGlow");
+      const reduced = window.matchMedia(
+        "(prefers-reduced-motion: reduce)"
+      );
 
-        if (!hero || !image || !glow) {
-          console.warn(
-            "Interactive topography elements not found."
-          );
-          return;
-        }
+      let targetX = 0;
+      let targetY = 0;
+      let currentX = 0;
+      let currentY = 0;
 
-        image.addEventListener("error", function () {
-          console.error(
-            "Topographic SVG failed to load:",
-            image.src
-          );
-        });
-
-        const reducedMotion = window.matchMedia(
-          "(prefers-reduced-motion: reduce)"
-        );
-
-        const finePointer = window.matchMedia(
-          "(hover: hover) and (pointer: fine)"
-        );
-
-        // Current position
-        let currentX = 0;
-        let currentY = 0;
-
-        // Desired position
-        let targetX = 0;
-        let targetY = 0;
-
-        // Cursor glow
-        let glowX = -500;
-        let glowY = -500;
-
-        let targetGlowX = -500;
-        let targetGlowY = -500;
-
-        let isHovering = false;
-        let frameId = null;
-        let lastTime = 0;
-
-        /*
-          Mouse interaction:
-          The pattern moves in response to the
-          pointer's position inside the hero.
-        */
-
-        function onPointerMove(event) {
-
-          if (
-            event.pointerType === "touch" ||
-            reducedMotion.matches ||
-            !finePointer.matches
-          ) {
-            return;
-          }
+      hero.addEventListener(
+        "pointermove",
+        (event) => {
+          if (event.pointerType === "touch") return;
 
           const rect = hero.getBoundingClientRect();
 
-          const normalizedX =
-            (event.clientX - rect.left) /
-            rect.width - 0.5;
+          const relativeX =
+            (event.clientX - rect.left) / rect.width - 0.5;
 
-          const normalizedY =
-            (event.clientY - rect.top) /
-            rect.height - 0.5;
+          const relativeY =
+            (event.clientY - rect.top) / rect.height - 0.5;
 
-          /*
-            Stronger displacement makes the
-            interaction visibly noticeable.
-          */
+          targetX = relativeX * 170;
+          targetY = relativeY * 115;
+        },
+        { passive: true }
+      );
 
-          targetX = normalizedX * 150;
-          targetY = normalizedY * 105;
+      hero.addEventListener("pointerleave", () => {
+        targetX = 0;
+        targetY = 0;
+      });
 
-          targetGlowX =
-            event.clientX - rect.left - 160;
+      function animate(time) {
+        if (!reduced.matches) {
+          currentX += (targetX - currentX) * 0.075;
+          currentY += (targetY - currentY) * 0.075;
 
-          targetGlowY =
-            event.clientY - rect.top - 160;
+          const ambientX = Math.sin(time * 0.0003) * 10;
+          const ambientY = Math.cos(time * 0.00025) * 8;
 
-          isHovering = true;
+          img.style.transform = `translate3d(
+            ${currentX + ambientX}px,
+            ${currentY + ambientY}px,
+            0
+          )`;
+        } else {
+          img.style.transform = "none";
         }
 
-        function onPointerLeave() {
-
-          targetX = 0;
-          targetY = 0;
-
-          isHovering = false;
-          glow.style.opacity = "0";
-        }
-
-        hero.addEventListener(
-          "pointermove",
-          onPointerMove,
-          { passive: true }
-        );
-
-        hero.addEventListener(
-          "pointerleave",
-          onPointerLeave
-        );
-
-        /*
-          Animation loop.
-          Smoothly follows the pointer and adds
-          slow independent background movement.
-        */
-
-        function animate(time) {
-
-          if (reducedMotion.matches) {
-            frameId = null;
-            image.style.transform = "none";
-            glow.style.opacity = "0";
-            return;
-          }
-
-          const dt = lastTime
-            ? Math.min((time - lastTime) / 1000, .05)
-            : 1 / 60;
-
-          lastTime = time;
-
-          /*
-            Time-independent smoothing keeps
-            motion consistent across refresh rates.
-          */
-
-          const ease = 1 - Math.exp(-6 * dt);
-
-          currentX += (targetX - currentX) * ease;
-          currentY += (targetY - currentY) * ease;
-
-          const seconds = time / 1000;
-
-          const ambientX =
-            Math.sin(seconds * .34) * 11;
-
-          const ambientY =
-            Math.cos(seconds * .28) * 9;
-
-          const finalX = currentX + ambientX;
-          const finalY = currentY + ambientY;
-
-          image.style.transform =
-            "translate3d(" +
-            finalX.toFixed(2) + "px, " +
-            finalY.toFixed(2) + "px, 0)";
-
-          /*
-            Cursor-following glow.
-          */
-
-          glowX +=
-            (targetGlowX - glowX) * ease;
-
-          glowY +=
-            (targetGlowY - glowY) * ease;
-
-          glow.style.transform =
-            "translate3d(" +
-            glowX.toFixed(2) + "px, " +
-            glowY.toFixed(2) + "px, 0)";
-
-          glow.style.opacity =
-            isHovering && finePointer.matches
-              ? "1"
-              : "0";
-
-          frameId = requestAnimationFrame(animate);
-        }
-
-        function startAnimation() {
-
-          if (
-            reducedMotion.matches ||
-            frameId !== null
-          ) {
-            return;
-          }
-
-          lastTime = 0;
-          frameId = requestAnimationFrame(animate);
-        }
-
-        function stopAnimation() {
-
-          if (frameId !== null) {
-            cancelAnimationFrame(frameId);
-            frameId = null;
-          }
-
-          image.style.transform = "none";
-          glow.style.opacity = "0";
-        }
-
-        reducedMotion.addEventListener(
-          "change",
-          function () {
-
-            if (reducedMotion.matches) {
-              stopAnimation();
-            } else {
-              startAnimation();
-            }
-
-          }
-        );
-
-        /*
-          Start immediately when the page loads.
-        */
-
-        startAnimation();
-
+        requestAnimationFrame(animate);
       }
 
-      if (document.readyState === "loading") {
-
-        document.addEventListener(
-          "DOMContentLoaded",
-          initTopography,
-          { once: true }
-        );
-
-      } else {
-
-        initTopography();
-
-      }
-
+      requestAnimationFrame(animate);
     })();
   </script>
 
